@@ -1,6 +1,9 @@
+#pragma once
+#include "LinkedQueue.hpp"  // remove before compiling? or pragma is sufficient
+
 template <typename T>
-LinkedQueue<T>::LinkedQueue() {
-    // TODO
+LinkedQueue<T>::LinkedQueue() : head(nullptr), last(nullptr) {
+    // TODO ctor 
 }
 
 template <typename T>
@@ -22,34 +25,64 @@ LinkedQueue<T>::~LinkedQueue() {
     clear();
 }
 
-template <typename T>
-T LinkedQueue<T>::back() const {
-    // TODO
+template <typename T>  
+T LinkedQueue<T>::back() const {  // reminder to self, back = last
+    if (isEmpty()) throw string("Queue is empty, nothing in back.");
+    return last->value;
 }
 
 template <typename T>
 void LinkedQueue<T>::clear() {
-    // TODO
+    while (head) {
+        Node* delMe = head;
+        head = head->next;
+        delete delMe;
+    }
+    last = nullptr;
+    this->length = 0;
 }
 
 template <typename T>
 void LinkedQueue<T>::copy(const LinkedQueue<T>& copyObj) {
     // TODO
+    // if (copyObj.isEmpty()) return; 
+    Node* curr = copyObj.head;
+    
+    while (curr) {
+        enqueue(curr->value);
+        curr = curr->next;
+    }
 }
 
 template <typename T>
-void LinkedQueue<T>::dequeue() {
+void LinkedQueue<T>::dequeue() { // reminder to self, dequeue = remove head
     // TODO
+    if (isEmpty()) throw string("Queue is empty, nothing to call.");
+    cout << "Calling number " << front() << ". Please proceed to window number 5."; // cause it's a queue? get it? :D
+    Node* delMe = head;
+    head = head->next;
+    delete delMe;
+    if (head == nullptr) last = nullptr;
+    --this->length;
 }
 
 template <typename T>
-void LinkedQueue<T>::enqueue(const T& elem) {
+void LinkedQueue<T>::enqueue(const T& elem) {  //reminder to self, enqueue = put at end of list as last
     // TODO
+    Node* newNode = new Node(elem);
+
+    // check if empty
+    if (isEmpty()) head = newNode;
+    else last->next = newNode;
+    last = newNode;
+    ++this->length;
 }
 
 template <typename T>
-T LinkedQueue<T>::front() const {
+T LinkedQueue<T>::front() const { // reminder to self, front = head
     // TODO
+    if (isEmpty()) throw string("Queue is empty, nothing in front.");
+    return head->value;
 }
 
 template <typename T>

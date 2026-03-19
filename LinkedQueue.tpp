@@ -7,7 +7,7 @@ LinkedQueue<T>::LinkedQueue() : head(nullptr), last(nullptr) {
 }
 
 template <typename T>
-LinkedQueue<T>::LinkedQueue(const LinkedQueue<T>& copyObj) {
+LinkedQueue<T>::LinkedQueue(const LinkedQueue<T>& copyObj)  : LinkedQueue() {  // call def ctor to make sure head and last are init, otherwise they are temp garbage values
     copy(copyObj);
 }
 
@@ -58,7 +58,7 @@ template <typename T>
 void LinkedQueue<T>::dequeue() { // reminder to self, dequeue = remove head
     // TODO
     if (isEmpty()) throw string("Queue is empty, nothing to call.");
-    cout << "Calling number " << front() << ". Please proceed to window number 5."; // cause it's a queue? get it? :D
+    cout << "Calling number " << front() << ". Please proceed to window number " << this->length << " "; // cause it's a queue? get it? :D
     Node* delMe = head;
     head = head->next;
     delete delMe;

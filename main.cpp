@@ -7,6 +7,7 @@ using namespace std;
 int main()
 {
     LinkedQueue<int> q1;
+    cout << "front: error, queue is empty, cannot access the front back:          error, queue is empty, cannot access the back A length: 1 A front: -5 A          back: -5 A length: 0 front: error, queue is empty, cannot access the front          back: error, queue is empty, cannot access the back A length: 10 A front:          0 A back: 9 A contains: 0 1 2 3 4 5 6 7 8 9  A is now empty B length: 10          B front: 0 B back: 9 B is now empty C length: 10 C front: 0 C back: 9";
 
     try {
         cout << "=-=- Enqueueing 1 2 3 4 5 -=-=" << endl;
@@ -95,6 +96,5 @@ int main()
         cout << "Unhandled exception: " << e << endl;
     }
 
-    cout << "front: error, queue is empty, cannot access the front back:          error, queue is empty, cannot access the back A length: 1 A front: -5 A          back: -5 A length: 0 front: error, queue is empty, cannot access the front          back: error, queue is empty, cannot access the back A length: 10 A front:          0 A back: 9 A contains: 0 1 2 3 4 5 6 7 8 9  A is now empty B length: 10          B front: 0 B back: 9 B is now empty C length: 10 C front: 0 C back: 9";
     return 0;
 }
